@@ -53,11 +53,9 @@ def stations():
 def temperature():
     yr_ago = dt.date(2017, 8, 23) - dt.timedelta(days=365)
     temperatures = session.query(Measurement.tobs).\
-    filter(Measurement.date >= yr_ago).\
-    filter(Measurement.station == 'USC00519281').all()
+    filter(Measurement.date >= yr_ago).all()
     all_temperatures_yrago = list(np.ravel(temperatures))
     return jsonify(all_temperatures_yrago)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
