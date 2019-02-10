@@ -50,12 +50,11 @@ def stations():
 
 
 @app.route("/api/v1.0/tobs")
-def temp_monthly():
+def temperature():
     yr_ago = dt.date(2017, 8, 23) - dt.timedelta(days=365)
-
     temperatures = session.query(Measurement.tobs).\
-    filter(Measurement.station == 'USC00519281').\
-    filter(Measurement.date >= yr_ago).all()
+    filter(Measurement.date >= yr_ago).\
+    filter(Measurement.station == 'USC00519281').all()
     all_temperatures_yrago = list(np.ravel(temperatures))
     return jsonify(all_temperatures_yrago)
 
