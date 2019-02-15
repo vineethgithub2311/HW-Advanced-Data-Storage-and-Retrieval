@@ -34,7 +34,7 @@ def welcome():
 @app.route("/api/v1.0/precipitation")
 def precipitation():
     prcptn = {
-        'date' : prcp
+        date : prcp
         for date, prcp in precipitation
     } 
     return jsonify(prcptn)
